@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+*{
+            margin: 0;
+            padding: 0;
+        }
+       nav ul{
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        color: white;
+       }
+       nav img{
+        height: 60px;
+        width: 80px;
+       }
+       nav{
+        display: flex;
+        background-color: darkseagreen;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0px;
+        
+       }
+       .visionhead{
+        font-size: 60px;
+        font-weight: 1000;
+        text-align: center;
+        margin-top: 10px;
+        color: crimson;
+       }
+       .contain{
+        height: 60px;
+        width: 400px;
+        background-color: darkseagreen;
+       }
+       .containparent{
+        display: flex;
+        gap: 40px;
+       }
+</style>
+<body>
+    <nav>
+        <img src="https://cdn.1min30.com/wp-content/uploads/2018/02/Embl%C3%A8me-D%C3%A9cathlon.jpg" alt="">
+        <ul>
+            <li>Home</li>
+            <select name="" id="sportsel">
+                <option value="">Football</option>
+                <option value="">Cricket</option>
+                <option value="">Hockey</option>
+                <option value="">Basket Ball</option>
+                <option value="">Badminton</option>
+            </select>
+            <li>About Us</li>
+            <li>Rentals</li>
+            <li>Help</li>
+        </ul>
+        <button class="lgnbtn">Login</button>
+    </nav>
+
+    <section class="visionmission">
+        <p class="visionhead">Our Vision</p>
+        <div class="containparent">
+        <div class="contain">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, neque quidem expedita in aut perferendis unde. Numquam debitis officiis sed, ipsum illum non natus! Aperiam tempora quae illum culpa hic!</p>
+        </div>
+        <div class="contain">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum neque inventore nesciunt non officiis est maiores dolorum aperiam explicabo! Laborum obcaecati enim reiciendis magni? Adipisci qui nulla dignissimos quam! Veniam?</div>
+        <div class="contain">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam esse, voluptatum nesciunt odio maxime autem doloribus illo deserunt explicabo porro fugiat iste sapiente accusamus consectetur provident perspiciatis inventore officiis assumenda.</div>
+        </div>
+    </section>
+
+</body>
+</html>

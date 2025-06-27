@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Decathlon Sports</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #006d77;
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    nav img {
+      height: 50px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      align-items: center;
+    }
+
+    nav ul li, select {
+      color: #ffffff;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    #sportsel {
+      background-color: #38b000;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .lgnbtn {
+      background-color: #38b000;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .Hero {
+      height: 90vh;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+        url("https://www.ocregister.com/wp-content/uploads/2019/09/hs-scoreboard-1.jpg?w=620") center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 0 15px;
+    }
+
+    .head {
+      font-size: 2.8rem;
+      color: #ffffff;
+      background-color: rgba(0, 191, 255, 0.7);
+      padding: 15px 25px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .learnmore {
+      padding: 12px 25px;
+      background-color: #8e44ad;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .learnmore:hover {
+      background-color: #732d91;
+    }
+
+    .sportsfoot {
+      padding: 40px 20px;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+
+    .sportsfoot.cricket {
+      background-image: url("https://th.bing.com/th/id/OIP.RmqhDOf48Fj72flRl4YYQgHaHa?cb=iwp2&rs=1&pid=ImgDetMain");
+    }
+
+    .sportsfoot:not(.cricket) {
+      background-image: url("https://images.pexels.com/photos/1530417/pexels-photo-1530417.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+    }
+
+    .sportsname {
+      font-size: 2rem;
+      color: coral;
+      background-color: rgba(255, 255, 255, 0.85);
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+
+    .mainparent {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .parent {
+      background-color: #ffffff;
+      width: 260px;
+      border-radius: 20px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .parent:hover {
+      transform: translateY(-5px);
+    }
+
+    .child {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .title {
+      font-size: 1.2rem;
+      color: #008b8b;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    .title2 {
+      color: #555;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .parent button {
+      background-color: #003366;
+      color: white;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .lddiv {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .ldbtn {
+      padding: 15px 30px;
+      background-color: crimson;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .moveup {
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      background-color: coral;
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      border: none;
+      font-size: 1.5rem;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .head {
+        font-size: 1.8rem;
+      }
+      .mainparent {
+        flex-direction: column;
+        align-items: center;
+      }
+      nav {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+        <img src="https://cdn.1min30.com/wp-content/uploads/2018/02/Embl%C3%A8me-D%C3%A9cathlon.jpg" alt="">
+        <ul>
+            <li>Home</li>
+            <select name="" id="sportsel">
+                <option value="">Football</option>
+                <option value="">Cricket</option>
+                <option value="">Hockey</option>
+                <option value="">Basket Ball</option>
+                <option value="">Badminton</option>
+            </select>
+            <li>About Us</li>
+            <li>Rentals</li>
+            <li>Help</li>
+        </ul>
+        <a href="login.html"><button class="lgnbtn">Login</button></a>
+    </nav>
+
+    <section class="Hero">
+        <p class="head">This is Decathlon, Your one stop solution for all sports equipments</p>
+        <button class="learnmore">LearnMore</button>
+    </section>
+    <section class="sportsfoot">
+        <p class="sportsname">Football</p>
+        <div class="mainparent">
+         <div class="parent">
+        <img class="child" src="https://th.bing.com/th/id/OIP.m2O0aMlLHDBX_6LrRArnbgHaHa?cb=iwp2&rs=1&pid=ImgDetMain" alt="">
+        <div>
+        <p class="title">Adidas</p>
+        <p class="title2">$120</p></div>
+        <button>Add to Cart</button>
+    </div>
+    <div class="parent">
+        <img class="child" src="https://th.bing.com/th/id/OIP.m2O0aMlLHDBX_6LrRArnbgHaHa?cb=iwp2&rs=1&pid=ImgDetMain" alt="">
+        <div>
+        <p class="title">Adidas</p>
+        <p class="title2">$120</p></div>
+        <button>Add to Cart</button>
+    </div>
+    <div class="parent">
+        <img class="child" src="https://th.bing.com/th/id/OIP.m2O0aMlLHDBX_6LrRArnbgHaHa?cb=iwp2&rs=1&pid=ImgDetMain" alt="">
+        <div>
+        <p class="title">Adidas</p>
+        <p class="title2">$120</p></div>
+        <button>Add to Cart</button>
+    </div>
+    <div class="parent">
+        <img class="child" src="https://th.bing.com/th/id/OIP.m2O0aMlLHDBX_6LrRArnbgHaHa?cb=iwp2&rs=1&pid=ImgDetMain" alt="">
+        <div>
+        <p class="title">Adidas</p>
+        <p class="title2">$120</p></div>
+        <button>Add to Cart</button>
+    </div>
+    
+    </div>
+    <div class="lddiv">
+    <button class="ldbtn">Load More</button>
+    </div>
+    </section>
+    <section class="sportsfoot cricket">
+        <p class="sportsname">Cricket</p>
+        <div class="mainparent">
+         <div class="parent">
+        <img class="child" src="https://th.bing.com/th/id/OIP.m2O0aMlLHDBX_6LrRArnbgHaHa?cb=iwp2&rs=1&pid=ImgDetMain" alt="">
+        <div>
+        <p class="title">SS</p>
+        <p class="title2">$100</p></div>
+        <button>Add to Cart</button>
+    </div>
+    <div class="parent">
+        <img class="child" src="https://www.sstoncricket.com/wp-content/uploads/2023/04/gladiator-bat-scaled.jpg" alt="">
+        <div>
+        <p class="title">BAS</p>
+        <p class="title2">$220</p></div>
+        <button>Add to Cart</button>
+    </div>
+    <div class="parent">
+        <img class="child" src="https://th.bing.com/th/id/OIP.m2O0aMlLHDBX_6LrRArnbgHaHa?cb=iwp2&rs=1&pid=ImgDetMain" alt="">
+        <div>
+        <p class="title">GreyNicles</p>
+        <p class="title2">$150</p></div>
+        <button>Add to Cart</button>
+    </div>
+    <div class="parent">
+        <img class="child" src="https://th.bing.com/th/id/OIP.m2O0aMlLHDBX_6LrRArnbgHaHa?cb=iwp2&rs=1&pid=ImgDetMain" alt="">
+        <div>
+        <p class="title">Reebok</p>
+        <p class="title2">$350</p></div>
+        <button>Add to Cart</button>
+    </div>
+    
+    </div>
+    <div class="lddiv">
+    <button class="ldbtn">Load More</button>
+    </div>
+    </section>
+    <section class="sportsfoot">
+        <p class="sportsname">Cricket</p>
+        <div class="mainparent">
+         <div class="parent">
+        <img class="child" src="https://th.bing.com/th/id/OIP.m2O0aMlLHDBX_6LrRArnbgHaHa?cb=iwp2&rs=1&pid=ImgDetMain" alt="">
+        <div>
+        <p class="title">SS</p>
+        <p class="title2">$100</p></div>
+        <button>Add to Cart</button>
+    </div>
+    <div class="parent">
+        <img class="child" src="https://www.sstoncricket.com/wp-content/uploads/2023/04/gladiator-bat-scaled.jpg" alt="">
+        <div>
+        <p class="title">BAS</p>
+        <p class="title2">$220</p></div>
+        <button>Add to Cart</button>
+    </div>
+    <div class="parent">
+        <img class="child" src="https://th.bing.com/th/id/OIP.m2O0aMlLHDBX_6LrRArnbgHaHa?cb=iwp2&rs=1&pid=ImgDetMain" alt="">
+        <div>
+        <p class="title">GreyNicles</p>
+        <p class="title2">$150</p></div>
+        <button>Add to Cart</button>
+    </div>
+    <div class="parent">
+        <img class="child" src="https://th.bing.com/th/id/OIP.m2O0aMlLHDBX_6LrRArnbgHaHa?cb=iwp2&rs=1&pid=ImgDetMain" alt="">
+        <div>
+        <p class="title">Reebok</p>
+        <p class="title2">$350</p></div>
+        <button>Add to Cart</button>
+    </div>
+    
+    </div>
+    <div class="lddiv">
+    <button class="ldbtn">Load More</button>
+    </div>
+    </section>
+    <section class="sportsfoot">
+        <p class="sportsname">Cricket</p>
+        <div class="mainparent">
+         <div class="parent">
+        <img class="child" src="https://th.bing.com/th/id/OIP.m2O0aMlLHDBX_6LrRArnbgHaHa?cb=iwp2&rs=1&pid=ImgDetMain" alt="">
+        <div>
+        <p class="title">SS</p>
+        <p class="title2">$100</p></div>
+        <button>Add to Cart</button>
+    </div>
+    <div class="parent">
+        <img class="child" src="https://www.sstoncricket.com/wp-content/uploads/2023/04/gladiator-bat-scaled.jpg" alt="">
+        <div>
+        <p class="title">BAS</p>
+        <p class="title2">$220</p></div>
+        <button>Add to Cart</button>
+    </div>
+    <div class="parent">
+        <img class="child" src="https://th.bing.com/th/id/OIP.m2O0aMlLHDBX_6LrRArnbgHaHa?cb=iwp2&rs=1&pid=ImgDetMain" alt="">
+        <div>
+        <p class="title">GreyNicles</p>
+        <p class="title2">$150</p></div>
+        <button>Add to Cart</button>
+    </div>
+    <div class="parent">
+        <img class="child" src="https://th.bing.com/th/id/OIP.m2O0aMlLHDBX_6LrRArnbgHaHa?cb=iwp2&rs=1&pid=ImgDetMain" alt="">
+        <div>
+        <p class="title">Reebok</p>
+        <p class="title2">$350</p></div>
+        <button>Add to Cart</button>
+    </div>
+    
+    </div>
+    <div class="lddiv">
+    <button class="ldbtn">Load More</button>
+    </div>
+    </section>
+    <section class="sportsfoot">
+        <p class="sportsname">Cricket</p>
+        <div class="mainparent">
+         <div class="parent">
+        <img class="child" src="https://th.bing.com/th/id/OIP.m2O0aMlLHDBX_6LrRArnbgHaHa?cb=iwp2&rs=1&pid=ImgDetMain" alt="">
+        <div>
+        <p class="title">SS</p>
+        <p class="title2">$100</p></div>
+        <button>Add to Cart</button>
+    </div>
+    <div class="parent">
+        <img class="child" src="https://www.sstoncricket.com/wp-content/uploads/2023/04/gladiator-bat-scaled.jpg" alt="">
+        <div>
+        <p class="title">BAS</p>
+        <p class="title2">$220</p></div>
+        <button>Add to Cart</button>
+    </div>
+    <div class="parent">
+        <img class="child" src="https://th.bing.com/th/id/OIP.m2O0aMlLHDBX_6LrRArnbgHaHa?cb=iwp2&rs=1&pid=ImgDetMain" alt="">
+        <div>
+        <p class="title">GreyNicles</p>
+        <p class="title2">$150</p></div>
+        <button>Add to Cart</button>
+    </div>
+    <div class="parent">
+        <img class="child" src="https://th.bing.com/th/id/OIP.m2O0aMlLHDBX_6LrRArnbgHaHa?cb=iwp2&rs=1&pid=ImgDetMain" alt="">
+        <div>
+        <p class="title">Reebok</p>
+        <p class="title2">$350</p></div>
+        <button>Add to Cart</button>
+    </div>
+    
+    </div>
+    <div class="lddiv">
+    <button class="ldbtn">Load More</button>
+    </div>
+    </section>
+    <button class="moveup"></button>
+</body>
+</html>
